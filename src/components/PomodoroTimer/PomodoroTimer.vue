@@ -6,7 +6,7 @@ import Config from './Config.vue';
 </script>
 
 <template>
-  <Header />
+  <Header title="Pomodoro Timer"/>
   <Config />
   <Content />
 </template>
