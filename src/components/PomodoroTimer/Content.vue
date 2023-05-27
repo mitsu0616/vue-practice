@@ -1,6 +1,5 @@
 <script setup>
 import { usePomodoroTimerStore } from "@/store/pomodoroTimer";
-import { convert } from "./timeFormat";
 
 const store = usePomodoroTimerStore();
 </script>
@@ -8,7 +7,7 @@ const store = usePomodoroTimerStore();
 <template>
   <div class="container">
     <div class="left">
-      <div class="type">{{ store.type = 1 ? "作業中" : "休憩中"  }}</div>
+      <div class="type">{{ store.type === 1 ? "作業中" : "休憩中"  }}</div>
       <div class="remaining">{{ store.getRemainingTimeDisplayValue }}</div>
     </div>
     <div class="right">{{ store.count }} Set</div>

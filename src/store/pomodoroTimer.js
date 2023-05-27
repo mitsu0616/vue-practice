@@ -61,6 +61,7 @@ export const usePomodoroTimerStore = defineStore("pomodoroTimer", () => {
     remainingTime,
     startTime,
     getRemainingTimeDisplayValue,
+    type,
     count,
     setStartTime,
     countdown,
