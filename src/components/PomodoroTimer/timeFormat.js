@@ -1,5 +1,5 @@
 export const convert = (msec) => {
-  const target = Math.floor(msec / 1000);
+  const target = Math.ceil(msec / 1000);
   const seconds = target % 60;
   const minuts = Math.floor(target / 60);
 
