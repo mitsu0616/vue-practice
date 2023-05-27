@@ -24,7 +24,8 @@ export const usePomodoroTimerStore = defineStore("pomodoroTimer", () => {
   const setStartTime = () => {
     // 残り時間の設定
     if (remainingTime.value <= 0) {
-      remainingTime.value = type.value === 1 ? workTime.value : restTime.value;
+      remainingTime.value =
+        type.value === 1 ? workTime.value * 60000 : restTime.value * 60000;
       if (type.value === 1) {
         count.value++;
       }
