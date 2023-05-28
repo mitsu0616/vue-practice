@@ -1,14 +1,16 @@
 <script setup>
 import { usePomodoroTimerStore } from "@/store/pomodoroTimer";
 import { BGM, mp3 } from "./BGM.js";
-import { watch } from "vue";
+import { ref, watch } from "vue";
 
 const store = usePomodoroTimerStore();
+const isRunning = ref(false);
 
 let intervalID;
 
 // startボタン
 const startTimer = () => {
+  isRunning.value = true;
   store.setStartTime();
   BGM.src = store.type === 1 ? mp3.workBGM : mp3.restBGM;
   BGM.play();
@@ -21,6 +23,7 @@ const timer = () => {
 
 // stopボタン
 const stopTimer = () => {
+  isRunning.value = false;
   BGM.pause();
   clearInterval(intervalID);
 };
@@ -74,9 +77,14 @@ const changeWorkTime = () => {
       </div>
     </div>
     <div class="col-right">
-      <button @click="startTimer">Start</button>
-      <button @click="stopTimer">Stop</button>
-      <button @click="resetTimer">Reset</button>
+      <button v-show="isRunning === false" @click="startTimer">Start</button>
+      <button v-show="isRunning === true" @click="stopTimer">Stop</button>
+      <button
+        v-show="isRunning === false && store.count > 0"
+        @click="resetTimer"
+      >
+        Reset
+      </button>
     </div>
   </div>
 </template>
