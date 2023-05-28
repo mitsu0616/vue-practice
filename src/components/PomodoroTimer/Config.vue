@@ -14,9 +14,12 @@ const startTimer = () => {
   store.setStartTime();
   BGM.src = store.type === 1 ? mp3.workBGM : mp3.restBGM;
   BGM.play();
+
+  // タイマー起動
   intervalID = setInterval(timer, 100);
 };
 
+// タイマー処理
 const timer = () => {
   store.countdown();
 };
