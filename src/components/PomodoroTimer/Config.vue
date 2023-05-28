@@ -99,6 +99,13 @@ const changeWorkTime = () => {
   .col-right {
     width: 50%;
     text-align: center;
+    padding-top: 30px;
+  }
+
+  .col-right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .input {
@@ -116,6 +123,23 @@ const changeWorkTime = () => {
     .input--readonly {
       background-color: #888;
     }
+  }
+}
+
+button {
+  width: 100px;
+  height: 50px;
+  margin: 0 20px;
+  font-size: 24px;
+  border-radius: 25px;
+  background-color: #f8a5c2;
+
+  &:hover {
+    background-color: #f78fb3
+  }
+
+  &:active {
+    background-color: #cf6a87;
   }
 }
 </style>
