@@ -27,6 +27,11 @@ export const usePomodoroTimerStore = defineStore("pomodoroTimer", () => {
   };
 
   const setStartTime = () => {
+    // 初回実行時は必ずcountを増やす
+    if (count.value === 0){
+      count.value++;
+    }
+
     // 残り時間の設定
     if (remainingTime.value <= 0) {
       remainingTime.value =
