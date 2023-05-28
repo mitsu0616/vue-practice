@@ -54,15 +54,23 @@ const changeWorkTime = () => {
       <div class="input">
         <label for="workTime">作業時間(分)</label>
         <input
+          :class="{ 'input--readonly': store.count > 0 }"
           type="number"
           v-model="store.workTime"
           id="workTime"
+          :readonly="store.count != 0"
           @change="changeWorkTime"
         />
       </div>
       <div class="input">
         <label for="restTime">休憩時間(分)</label>
-        <input type="number" v-model="store.restTime" id="restTime" />
+        <input
+          :class="{ 'input--readonly': store.count > 0 }"
+          type="number"
+          v-model="store.restTime"
+          id="restTime"
+          :readonly="store.count != 0"
+        />
       </div>
     </div>
     <div class="col-right">
@@ -95,6 +103,10 @@ const changeWorkTime = () => {
       font-size: 16px;
       padding: 10px 20px;
       border-radius: 5px;
+    }
+
+    .input--readonly {
+      background-color: #888;
     }
   }
 }
