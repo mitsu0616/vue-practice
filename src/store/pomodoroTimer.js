@@ -61,7 +61,7 @@ export const usePomodoroTimerStore = defineStore("pomodoroTimer", () => {
 
   // タイマーの初期化
   const reset = () => {
-    remainingTime.value = 0;
+    remainingTime.value = workTime.value * 60000;
     count.value = 0;
     type.value = 1;
   };
