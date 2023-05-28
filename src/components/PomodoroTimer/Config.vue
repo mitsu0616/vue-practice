@@ -1,5 +1,7 @@
 <script setup>
 import { usePomodoroTimerStore } from "@/store/pomodoroTimer";
+import { BGM, mp3 } from "./BGM.js";
+import { watch } from "vue";
 
 const store = usePomodoroTimerStore();
 
@@ -8,6 +10,8 @@ let intervalID;
 // startボタン
 const startTimer = () => {
   store.setStartTime();
+  BGM.src = store.type === 1 ? mp3.workBGM : mp3.restBGM;
+  BGM.play();
   intervalID = setInterval(timer, 100);
 };
 
@@ -17,6 +21,7 @@ const timer = () => {
 
 // stopボタン
 const stopTimer = () => {
+  BGM.pause();
   clearInterval(intervalID);
 };
 
@@ -24,6 +29,18 @@ const stopTimer = () => {
 const resetTimer = () => {
   store.reset();
 };
+
+// 作業/休憩の切り替え時にBGMを変更 
+watch(
+  () => store.type,
+  (type) => {
+    if (store.count !== 0) {
+      BGM.pause();
+      BGM.src = type === 1 ? mp3.workBGM : mp3.restBGM;
+      BGM.play();
+    }
+  }
+);
 </script>
 
 <template>
