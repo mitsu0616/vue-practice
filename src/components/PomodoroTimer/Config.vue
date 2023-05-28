@@ -30,7 +30,7 @@ const resetTimer = () => {
   store.reset();
 };
 
-// 作業/休憩の切り替え時にBGMを変更 
+// 作業/休憩の切り替え時にBGMを変更
 watch(
   () => store.type,
   (type) => {
@@ -41,6 +41,11 @@ watch(
     }
   }
 );
+
+// 作業時間設定時に残り時間も同時に設定
+const changeWorkTime = () => {
+  store.initRemainingTimeSet();
+};
 </script>
 
 <template>
@@ -48,11 +53,16 @@ watch(
     <div class="col-left">
       <div class="input">
         <label for="workTime">作業時間(分)</label>
-        <input type="text" v-model="store.workTime" id="workTime" />
+        <input
+          type="number"
+          v-model="store.workTime"
+          id="workTime"
+          @change="changeWorkTime"
+        />
       </div>
       <div class="input">
         <label for="restTime">休憩時間(分)</label>
-        <input type="text" v-model="store.restTime" id="restTime" />
+        <input type="number" v-model="store.restTime" id="restTime" />
       </div>
     </div>
     <div class="col-right">

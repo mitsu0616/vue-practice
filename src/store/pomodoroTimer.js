@@ -21,6 +21,11 @@ export const usePomodoroTimerStore = defineStore("pomodoroTimer", () => {
   });
 
   // Action
+  // 作業時間設定時に残り時間も同時に設定
+  const initRemainingTimeSet = () => {
+    remainingTime.value = workTime.value * 60000;
+  };
+
   const setStartTime = () => {
     // 残り時間の設定
     if (remainingTime.value <= 0) {
@@ -64,6 +69,7 @@ export const usePomodoroTimerStore = defineStore("pomodoroTimer", () => {
     getRemainingTimeDisplayValue,
     type,
     count,
+    initRemainingTimeSet,
     setStartTime,
     countdown,
     reset,
