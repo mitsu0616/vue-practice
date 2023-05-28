@@ -6,11 +6,10 @@ const store = usePomodoroTimerStore();
 
 <template>
   <div class="container">
-    <div class="left">
-      <div class="type">{{ store.type === 1 ? "作業中" : "休憩中"  }}</div>
+    <div class="container__item">
+      <div class="type">{{ store.type === 1 ? "作業中" : "休憩中"  }}({{ store.count }} set)</div>
       <div class="remaining">{{ store.getRemainingTimeDisplayValue }}</div>
     </div>
-    <div class="right">{{ store.count }} Set</div>
   </div>
 </template>
 
@@ -21,10 +20,10 @@ const store = usePomodoroTimerStore();
   padding: 40px;
   display: flex;
   align-items: center;
+  justify-content: center;
 
-  .left {
+  &__item {
     text-align: center;
-    flex: 5;
 
     * {
       padding: 10px 0;
@@ -37,10 +36,5 @@ const store = usePomodoroTimerStore();
     }
   }
 
-  .right {
-    text-align: center;
-    flex: 1;
-    font-size: 24px;
-  }
 }
 </style>

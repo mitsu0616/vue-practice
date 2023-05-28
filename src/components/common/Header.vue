@@ -34,7 +34,6 @@ const props = defineProps({
 
   .title {
     flex: 3;
-    text-align: center;
     font-size: 28px;
   }
 }

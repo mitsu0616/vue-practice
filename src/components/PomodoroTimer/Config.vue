@@ -91,21 +91,23 @@ const changeWorkTime = () => {
 
 <style lang="scss" scoped>
 .container {
-  width: 80%;
+  width: 100%;
   margin: auto;
   display: flex;
+  justify-content: center;
 
   .col-left,
   .col-right {
-    width: 50%;
+    width: 400px;
+    padding: 30px 20px;
     text-align: center;
-    padding-top: 30px;
   }
 
-  .col-right{
+  .col-right {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
+    flex-wrap: wrap;
   }
 
   .input {
@@ -116,7 +118,8 @@ const changeWorkTime = () => {
 
     input {
       font-size: 16px;
-      padding: 10px 20px;
+      width: 80px;
+      padding: 10px 10px;
       border-radius: 5px;
     }
 
@@ -135,11 +138,20 @@ button {
   background-color: #f8a5c2;
 
   &:hover {
-    background-color: #f78fb3
+    background-color: #f78fb3;
   }
 
   &:active {
     background-color: #cf6a87;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .container {
+    .col-left,
+    .col-right {
+      padding: 0px 0px;
+    }
   }
 }
 </style>
